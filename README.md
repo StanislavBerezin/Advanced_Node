@@ -1,5 +1,12 @@
 # Start
 
+If some functions or libraries require callbacks we can do the following to make use of await and promises
+
+```
+ client.get = util.promisify(client.get)
+```
+
+client.get in this case is wrapped in promise, but the same logic could be applied to anything.
 Cookie session to work with authenticaton for incoming requests
 Passport - authentication for the app
 

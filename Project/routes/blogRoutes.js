@@ -17,6 +17,13 @@ module.exports = app => {
     const redis = require('redis')
     const redisUrl = 'redis://127.0.0.1:6379'
     const client = redis.CreateClient(redisUrl)
+    const util = require('util')
+    // everytime client.get is called it will be wrapped in the promise
+    client.get = util.promisify(client.get)
+
+    const cachedBlog = await client.get(req.user.id)
+
+
 
     const blogs = await Blog.find({
       _user: req.user.id

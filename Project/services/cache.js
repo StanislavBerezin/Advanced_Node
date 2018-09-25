@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-const exec = mongoose.Query.prototype.exec;
+const exec = mongoose.Query.prototype.exec
 
 mongoose.Query.prototype.exec = function () {
 

@@ -6,7 +6,10 @@ If some functions or libraries require callbacks we can do the following to make
  client.get = util.promisify(client.get)
 ```
 
+expiry: client.set('key','value', 'EX', 5 ) 5 is for 5 seconds
+
 client.get in this case is wrapped in promise, but the same logic could be applied to anything.
+
 Cookie session to work with authenticaton for incoming requests
 Passport - authentication for the app
 
@@ -47,3 +50,11 @@ const example = {
 to set hashes can type `client.hset('test1', 'imKey','imValue')` and to get it `client.hget('test1', 'imKey' , (err, res)=>console.log(res))`
 
 if want to store objects in values then need `JSON.stringify({key: 'Value})` and to retreie it `(err, res)=> console.log(JSON.parse(res))`
+
+client.flushall() removes everything
+
+# Efficiency
+
+1. Need to hook up redis query search before each DB execution is made
+2. Expiry dates
+3. Robust key generation

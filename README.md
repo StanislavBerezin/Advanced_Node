@@ -58,3 +58,8 @@ client.flushall() removes everything
 1. Need to hook up redis query search before each DB execution is made
 2. Expiry dates
 3. Robust key generation
+
+# Testing
+
+- Unit testing - For one unit e.g function or route
+- Integration testing - all in combination

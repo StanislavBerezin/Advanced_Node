@@ -1,24 +1,28 @@
-const mongoose = require('mongoose')
+const mongoose = require("mongoose");
+const redis = require("redis");
+const redisUrl = "redis://127.0.0.1:6379";
+const client = redis.createClient(redisUrl);
+const util = require("util");
+const exec = mongoose.Query.prototype.exec;
+client.get = util.promisify(client.get);
+mongoose.Query.prototype.exec = function() {
+  console.log("im a bout to run");
+  // need to work here/ thats where stopped
+  //need to execute a redis search before db
 
-const exec = mongoose.Query.prototype.exec
+  //   Object assign as the first arguents takes what we want to create
+  // its an object, then inside of there we store result of this.getQuery
+  //and this.mongoocseCollection.name
+  const key = Object.assign({}, this.getQuery(), {
+    collection: this.mongooseCollection.name
+  });
 
-mongoose.Query.prototype.exec = function () {
+  console.log(key);
 
-    console.log("im a bout to run")
-    // need to work here/ thats where stopped
-    //need to execute a redis search before db
+  // to run original exec
+  return exec.apply(this, arguments);
+};
 
-
-    // to run original exec
-    return exec.apply(this, arguments)
-
-
-}
-
-// const redis = require('redis')
-// const redisUrl = 'redis://127.0.0.1:6379'
-// const client = redis.createClient(redisUrl)
-// const util = require('util')
 // // everytime client.get is called it will be wrapped in the promise
 // client.get = util.promisify(client.get)
 

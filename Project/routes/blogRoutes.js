@@ -18,6 +18,7 @@ module.exports = app => {
     const blogs = await Blog.find({
       _user: req.user.id
     }).cache({
+      // we know that hashkey is the same as user id, so thats the one we are looking for
       key: req.user.id
     });
 

@@ -36,6 +36,8 @@ mongoose.Query.prototype.exec = async function () {
     );
 
     // See if we have a value for 'key' in redis
+    // here we are using hashKey from cache() function, to get the specific hashKey used to store all associatated data with it
+    // and key in this intance plays a role of the request itself
     const cacheValue = await client.hget(this.hashKey, key);
 
     // If we do, return that

@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/StanislavBerezin/NodeJs_round.svg?branch=master)](https://travis-ci.org/StanislavBerezin/NodeJs_round)
+
 # Start
 
 If some functions or libraries require callbacks we can do the following to make use of await and promises

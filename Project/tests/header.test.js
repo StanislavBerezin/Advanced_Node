@@ -29,3 +29,7 @@ test("Clicking login starts authentication process", async () => {
     expect(url).toMatch(/accounts\.google\.com/);
 
 })
+
+test("Should display logout button when signed in", async () => {
+
+})

@@ -63,3 +63,21 @@ client.flushall() removes everything
 
 - Unit testing - For one unit e.g function or route
 - Integration testing - all in combination
+
+# Cookie
+Session = cookie sgning key + signature
+to make sure that nobody has tampered with session. Its a cookieKey in config.
+
+# Jest
+
+It runs a chronium browser to see elements on the page and we can test against it. Puppeteer starts chronium, and page shows a tab. 
+Logic:  Starts chron -> navigate to app -> elements on the screen -> Dom selector to get elements -> assert (compare, test)
+
+for JEST: https://jestjs.io/docs/en/api
+for things like expect(asd).toMatch(asasdasd), or expect(asd).toEqual(ddd) etc. 
+for puppeteer: https://github.com/GoogleChrome/puppeteer 
+to boot up browser and get elements from there.
+
+
+# Continues integration (Travis)
+

@@ -1,0 +1,31 @@
+language: node_js
+node_js:
+  - "8"
+dist: trusty
+# to start its own instances of these rather than connecting to real
+services:
+  - mongodb
+  - redis-server
+# env Variables
+env:
+  # in config.keys it will know what to use
+  - NODE_ENV=ci
+# node_modules should be cached rather than rebuilding everytime
+cache:
+  directories:
+    - node_modules
+    - client/node_modules
+# to install the packages
+# use npm run build for client
+install:
+  - npm install
+  - npm run build
+# & tells to run in a subshell(background)
+# nohup , if shell is closed dont stop the running processes
+# its all needed to run it on travis CI
+script:
+  - nohup npm run start &
+  # wait for 3 secs to let all code to execute
+  - sleep 3
+  # to run the tests itself
+  - npm run test

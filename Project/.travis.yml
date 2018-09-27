@@ -9,7 +9,7 @@ services:
 # env Variables
 env:
   # in config.keys it will know what to use
-  - NODE_ENV=ci
+  - NODE_ENV=ci PORT=3000
 # node_modules should be cached rather than rebuilding everytime
 cache:
   directories:

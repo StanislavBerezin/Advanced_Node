@@ -82,3 +82,5 @@ to boot up browser and get elements from there.
 # Continues integration (Travis)
 
 Pushes code to github -> Travis checkes the pushed code -> Travis clones the project -> Then runs tests -> if its all good, send an email or do something else.
+
+We can instruct Travis to create its own instances of MongoDB/Redis without the need of accessing the real ones for the sake of testing.
